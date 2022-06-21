@@ -1,0 +1,111 @@
+:root {
+    --clr-neautral-900: #000;
+    --clr-neautral-100: #fff;
+    --clr-neautral-400: hsl(142, 90%, 61%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    line-height: 1.6;
+    background: var(--clr-neautral-900);
+    font-family: sans-serif;
+}
+
+.card {
+    color: var(--clr-neautral-100);
+    background-image: url(https://images.unsplash.com/photo-1655629887291-a2556feb366d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI3fGlVSXNuVnRqQjBZfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+    padding: 10rem 0 0;
+    max-width: 35ch;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    transition: transform 500ms ease;
+}
+
+.card:hover {
+    transform: scale(1.02)
+}
+
+.card-content {
+    --padding: 1.5rem;
+    padding: var(--padding);
+    background: linear-gradient(
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / .5) 15%,
+        hsl(0 0% 0% / 1)
+    );
+    transform: translateY(75%);
+    transition: transform 500ms ease;
+
+}
+
+.card:hover .card-content { 
+    transform: translateY(0);
+    transition-delay: 500ms;
+}
+
+.card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear
+}
+
+
+
+.card:hover .card-content > *:not(.card-title) {
+    opacity: 1;
+}
+
+.card-title {
+    position: relative;
+    width: max-content;
+    font-size: larger;
+    margin-bottom: .25em;
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: calc(100% + var(--padding));
+    left: calc(var(--padding) * -1 );
+    bottom: -2px;
+    background: var(--clr-neautral-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+
+}
+
+.card:hover .card-title::after {
+    transform: scaleX(1);
+}
+
+.card-body {
+    color: rgb(255, 255, 255 / .9);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-neautral-900);
+    background-color: var(--clr-neautral-400);
+    padding: .5em 1em;
+    border-radius: 0.25em;
+    margin-top: .5em;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--clr-neautral-100);
+
+}
